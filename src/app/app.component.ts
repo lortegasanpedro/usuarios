@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   title = 'usuarios';
   usuario: Usuario;
   arrayUsuarios: Array<Usuario>;
-
+  loading: boolean;
   // Create observer object
   myObserver = {
     next: (x: string) => console.log('Observer got a next value: ' + x),
@@ -24,13 +24,14 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     console.log ('AppComponent ngOnInit');
-    this.usuario = new Usuario('', '', '',
+    this.loading = true;
+    this.usuario = new Usuario(null,'', '', '',
                                '', '', '',
                                null, '');
     this.arrayUsuarios = [];
     this.usuariosService.getUsers().subscribe ((dat) => {
-      console.log(this.arrayUsuarios);
-      console.log(dat);
+      //console.log(this.arrayUsuarios);
+      //console.log(dat);
       this.data(dat);
     }, this.error, this.complet);
     console.log ('AppComponent ngOnInit 2');
@@ -38,16 +39,18 @@ export class AppComponent implements OnInit {
 
   data(datos: any) {
     //this.arrayUsuarios = datos;
-    console.log(datos);
-    datos.results.forEach( usu => {
+   // console.log(datos);
+    datos.results.forEach( (usu, index) => {
     //this.arrayUsuarios = datos;
+    //let contador=0;
     this.arrayUsuarios.push(
-      new Usuario(usu.gender, usu.name.first, usu.name.last, usu.phone,
-                               usu.picture.thumbnail, usu.email, null,
+      new Usuario(index, usu.gender, usu.name.first, usu.name.last, usu.phone,
+                               usu.picture.thumbnail, usu.email, usu.dob.age,
                                usu.nat));
 
       } );
-    console.log(this.arrayUsuarios);
+      this.loading=false;
+    //console.log(this.arrayUsuarios);
   }
 
   error(err: any) {

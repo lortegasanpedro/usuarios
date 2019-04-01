@@ -10,7 +10,7 @@ export class UsuarioServiceService {
   url: string;
 
   constructor(private http: HttpClient) {
-    this.url = 'https://randomuser.me/api/?results=50';
+    this.url = 'https://randomuser.me/api/?results=5000';
   }
 
   getUsers(): Observable<any> {

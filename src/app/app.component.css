@@ -2,8 +2,15 @@
     border: 2px;
     border-color: cadetblue;
     border-style:solid;
+    margin-bottom: 10px;
+    max-width: 450px;
+    padding: 5px;
 }
 
 span {
     font-weight: bold;
+}
+
+#loading img {
+    width: 250px;
 }
