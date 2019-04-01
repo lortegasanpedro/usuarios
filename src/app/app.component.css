@@ -1,0 +1,9 @@
+#usuario {
+    border: 2px;
+    border-color: cadetblue;
+    border-style:solid;
+}
+
+span {
+    font-weight: bold;
+}

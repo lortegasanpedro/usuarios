@@ -28,21 +28,25 @@ export class AppComponent implements OnInit {
                                '', '', '',
                                null, '');
     this.arrayUsuarios = [];
-    this.usuariosService.getUsers().subscribe (this.data, this.error, this.complet);
+    this.usuariosService.getUsers().subscribe ((dat) => {
+      console.log(this.arrayUsuarios);
+      console.log(dat);
+      this.data(dat);
+    }, this.error, this.complet);
     console.log ('AppComponent ngOnInit 2');
   }
 
-  data(datos: any,  ) {
+  data(datos: any) {
     //this.arrayUsuarios = datos;
     console.log(datos);
-    //datos.results.forEach( usu => {
+    datos.results.forEach( usu => {
     //this.arrayUsuarios = datos;
-    //this.arrayUsuarios.push(
-     // new Usuario(usu.name.first, usu.name.last, '',
-     //                          '', '', '',
-     //                          null, ''));
+    this.arrayUsuarios.push(
+      new Usuario(usu.gender, usu.name.first, usu.name.last, usu.phone,
+                               usu.picture.thumbnail, usu.email, null,
+                               usu.nat));
 
-     // } );
+      } );
     console.log(this.arrayUsuarios);
   }
 
