@@ -1,0 +1,17 @@
+<h1>Listado de Usuarios {{arrayUsuarios.length}}</h1>
+
+<!-- <div *ngIf="arrayUsuarios.length > 0 "> -->
+  <div id="usuario" *ngFor="let usuario of arrayUsuarios">
+    <p><span>Sexo: </span>{{usuario.sexo}}</p>
+    <p><span>Nombre: </span>{{usuario.nombre}}</p>
+    <p><span>Apellidos: </span>{{usuario.apellido}}</p>
+    <p><span>Telefono: </span>{{usuario.telefono}}</p>
+    <p><span>Email: </span>{{usuario.email}}</p>
+    <p><span>Fecha de Nacimiento: </span>{{usuario.fechaNacimiento}}</p>
+    <p><span>Nacionalidad: </span>{{usuario.nacionalidad}}</p>
+    <p><span>Foto: </span><img [src]="usuario.foto" alt="Foto - {{usuario.nombre}}" /></p>
+  </div>
+<!-- </div> -->
+<div id="usuario" *ngIf="arrayUsuarios.length==0">
+  <p>No hay Usuarios</p>
+</div>
