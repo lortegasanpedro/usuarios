@@ -1,7 +1,8 @@
-<h1>Listado de Usuarios {{arrayUsuarios.length}}</h1>
+<h1 *ngIf="loading==false">Listado de Usuarios {{arrayUsuarios.length}}</h1>
 
 <!-- <div *ngIf="arrayUsuarios.length > 0 "> -->
   <div id="usuario" *ngFor="let usuario of arrayUsuarios">
+      
     <p><span>Nº Usuario: </span>{{usuario.numeroUsuario}}</p>
     <p><span>Sexo: </span>{{usuario.sexo}}</p>
     <p><span>Nombre: </span>{{usuario.nombre}}</p>
@@ -13,10 +14,12 @@
     <p><span>Foto: </span><img [src]="usuario.foto" alt="Foto - {{usuario.nombre}}" /></p>
   </div>
 <!-- </div> -->
-<div id="usuario" *ngIf="arrayUsuarios.length==0">
+<!-- <div id="usuario" *ngIf="arrayUsuarios.length==0">
   <p>No hay Usuarios</p>
 </div>
+-->
 
-<div id="loading" *ngIf="loadig==true">
-  <img src="https://i.gifer.com/7TwJ.gif" alt="loading"/>
+<div id="loading" *ngIf="loading==true">
+  <h3>Cargando</h3>
+  <img src="assets/img/spinner.gif" alt="loading"/>
 </div>

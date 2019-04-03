@@ -38,19 +38,19 @@ export class AppComponent implements OnInit {
   }
 
   data(datos: any) {
-    //this.arrayUsuarios = datos;
-   // console.log(datos);
+
     datos.results.forEach( (usu, index) => {
-    //this.arrayUsuarios = datos;
-    //let contador=0;
+    let elementos = datos.results.length;
+    elementos = elementos - 1;
     this.arrayUsuarios.push(
       new Usuario(index, usu.gender, usu.name.first, usu.name.last, usu.phone,
                                usu.picture.thumbnail, usu.email, usu.dob.age,
                                usu.nat));
-
+    if ( index === elementos ) {
+            this.loading = false;
+          }
+          // console.log ( datos.results.length + ' - ' + index);
       } );
-      this.loading=false;
-    //console.log(this.arrayUsuarios);
   }
 
   error(err: any) {
